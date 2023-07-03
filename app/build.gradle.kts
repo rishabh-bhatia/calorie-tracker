@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.internal.KaptGenerateStubsTask
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -22,7 +24,6 @@ android {
             useSupportLibrary = true
         }
     }
-
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
@@ -32,11 +33,11 @@ android {
         compose = true
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
     composeOptions {
         kotlinCompilerExtensionVersion = Compose.composeCompilerVersion
@@ -47,6 +48,11 @@ android {
         exclude("**/attach_hotspot_windows.dll")
         exclude("META-INF/licenses/ASM")
     }
+}
+
+tasks.withType(type = KaptGenerateStubsTask::class) {
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_11.toString()
+
 }
 
 dependencies {
