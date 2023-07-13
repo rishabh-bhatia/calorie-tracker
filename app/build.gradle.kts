@@ -1,11 +1,8 @@
-import org.jetbrains.kotlin.gradle.internal.KaptGenerateStubsTask
-
 plugins {
     id("com.android.application")
     kotlin("android")
     id("dagger.hilt.android.plugin")
     id("kotlin-kapt") //Annotation processing for dagger
-
 }
 
 android {
@@ -50,9 +47,8 @@ android {
     }
 }
 
-tasks.withType(type = KaptGenerateStubsTask::class) {
+tasks.withType(type = org.jetbrains.kotlin.gradle.internal.KaptGenerateStubsTask::class) {
     kotlinOptions.jvmTarget = JavaVersion.VERSION_11.toString()
-
 }
 
 dependencies {
