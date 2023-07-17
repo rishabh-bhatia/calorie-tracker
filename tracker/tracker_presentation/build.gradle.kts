@@ -6,6 +6,7 @@ tasks.withType(type = org.jetbrains.kotlin.gradle.internal.KaptGenerateStubsTask
 }
 dependencies {
     "implementation"(project(Modules.core))
+    "implementation"(project(Modules.coreUi))
     "implementation"(project(Modules.trackerDomain))
 
     "implementation"(Coil.coilCompose)
