@@ -6,4 +6,5 @@ tasks.withType(type = org.jetbrains.kotlin.gradle.internal.KaptGenerateStubsTask
 }
 dependencies {
     "implementation"(project(Modules.core))
+    "implementation"(Coroutines.coroutines)
 }
