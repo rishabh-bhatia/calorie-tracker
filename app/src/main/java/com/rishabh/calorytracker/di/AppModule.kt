@@ -3,7 +3,7 @@ package com.rishabh.calorytracker.di
 import android.app.Application
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
-import com.rishabh.core.domain.DefaultPreferences
+import com.rishabh.core.data.preferences.DefaultPreferences
 import com.rishabh.core.domain.preferences.Preferences
 import com.rishabh.core.domain.use_case.FilterOutDigits
 import dagger.Module

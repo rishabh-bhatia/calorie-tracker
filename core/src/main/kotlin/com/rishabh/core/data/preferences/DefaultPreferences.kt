@@ -1,4 +1,4 @@
-package com.rishabh.core.domain
+package com.rishabh.core.data.preferences
 
 import android.content.SharedPreferences
 import com.rishabh.core.domain.model.ActivityLevel
@@ -67,6 +67,19 @@ class DefaultPreferences(
             carbRatio = carbRatio,
             fatRatio = fatRatio,
             proteinRatio = proteinRatio
+        )
+    }
+
+    override fun saveShouldShowOnboarding(shouldShow: Boolean) {
+        sharedPreference.edit()
+            .putBoolean(Preferences.KEY_SHOULD_SHOW_ONBOARDING, shouldShow)
+            .apply()
+    }
+
+    override fun loadShouldShowOnboarding(): Boolean {
+        return sharedPreference.getBoolean(
+            Preferences.KEY_SHOULD_SHOW_ONBOARDING,
+            true
         )
     }
 }
