@@ -1,4 +1,4 @@
-package com.rishabh.core.navigation
+package com.rishabh.calorytracker.navigation
 
 object Route {
     const val WELCOME = "welcome"
