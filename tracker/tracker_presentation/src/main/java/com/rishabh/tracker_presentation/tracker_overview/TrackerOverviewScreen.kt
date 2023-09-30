@@ -9,10 +9,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import coil.annotation.ExperimentalCoilApi
 import com.rishabh.calorytracker.R
 import com.rishabh.core.util.UiEvent
 import com.rishabh.core_ui.LocalSpacing
@@ -22,6 +24,7 @@ import com.rishabh.tracker_presentation.components.ExpandableMeal
 import com.rishabh.tracker_presentation.components.NutrientsHeader
 import com.rishabh.tracker_presentation.components.TrackedFoodItem
 
+@ExperimentalCoilApi
 @Composable
 fun TrackerOverviewScreen(
     onNavigate: (UiEvent.Navigate) -> Unit,
@@ -30,6 +33,14 @@ fun TrackerOverviewScreen(
     val spacing = LocalSpacing.current
     val state = viewModel.state
     val context = LocalContext.current
+    LaunchedEffect(key1 = context) {
+        viewModel.uiEvent.collect { event ->
+            when(event) {
+                is UiEvent.Navigate -> onNavigate(event)
+                else -> Unit
+            }
+        }
+    }
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
